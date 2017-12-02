@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!mysql-connector-java-5.1.45-bin.jar
 *.war
 *.ear
 *.zip
@@ -24,3 +25,7 @@ hs_err_pid*
 
 # intelliJ files
 *.idea
+out/
+*.iml
+bibliotecaps.properties
+bibliotecaps.xml
