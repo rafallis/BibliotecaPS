@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!mysql-connector-java-5.1.45-bin.jar
 *.war
 *.ear
 *.zip
