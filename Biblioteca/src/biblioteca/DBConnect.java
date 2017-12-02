@@ -34,10 +34,7 @@ public class DBConnect {
             while(rs.next()) {
                 String name = rs.getString("nome");
                 String age = rs.getString("idade");
-                String employee = rs.getString("empregado");
-                System.out.print("Nome: "+name+" Idade: "+age+" Trabalhando: ");
-                if(employee == "0") System.out.println("não");
-                else System.out.println("sim");
+                System.out.println("Nome: "+name+" Idade: "+age);
             }
 
         } catch (Exception e) {
