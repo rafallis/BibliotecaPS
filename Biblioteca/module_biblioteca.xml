@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_biblioteca" default="compile.module.biblioteca">
+  <dirname property="module.biblioteca.basedir" file="${ant.file.module_biblioteca}"/>
+  
+  <property name="module.jdk.home.biblioteca" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.biblioteca" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.biblioteca" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.biblioteca" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="biblioteca.output.dir" value="${module.biblioteca.basedir}/../out/production/Biblioteca"/>
+  <property name="biblioteca.testoutput.dir" value="${module.biblioteca.basedir}/../out/test/Biblioteca"/>
+  
+  <path id="biblioteca.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="biblioteca.module.production.classpath">
+    <path refid="${module.jdk.classpath.biblioteca}"/>
+  </path>
+  
+  <path id="biblioteca.runtime.production.module.classpath">
+    <pathelement location="${biblioteca.output.dir}"/>
+  </path>
+  
+  <path id="biblioteca.module.classpath">
+    <path refid="${module.jdk.classpath.biblioteca}"/>
+    <pathelement location="${biblioteca.output.dir}"/>
+  </path>
+  
+  <path id="biblioteca.runtime.module.classpath">
+    <pathelement location="${biblioteca.testoutput.dir}"/>
+    <pathelement location="${biblioteca.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.biblioteca">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.biblioteca">
+    <patternset refid="excluded.from.module.biblioteca"/>
+  </patternset>
+  
+  <path id="biblioteca.module.sourcepath">
+    <dirset dir="${module.biblioteca.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.biblioteca" depends="compile.module.biblioteca.production,compile.module.biblioteca.tests" description="Compile module Biblioteca"/>
+  
+  <target name="compile.module.biblioteca.production" depends="register.custom.compilers" description="Compile module Biblioteca; production classes">
+    <mkdir dir="${biblioteca.output.dir}"/>
+    <javac2 destdir="${biblioteca.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.biblioteca}/javac">
+      <compilerarg line="${compiler.args.biblioteca}"/>
+      <bootclasspath refid="biblioteca.module.bootclasspath"/>
+      <classpath refid="biblioteca.module.production.classpath"/>
+      <src refid="biblioteca.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.biblioteca"/>
+    </javac2>
+    
+    <copy todir="${biblioteca.output.dir}">
+      <fileset dir="${module.biblioteca.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.biblioteca.tests" depends="register.custom.compilers,compile.module.biblioteca.production" description="compile module Biblioteca; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.biblioteca" description="cleanup module">
+    <delete dir="${biblioteca.output.dir}"/>
+    <delete dir="${biblioteca.testoutput.dir}"/>
+  </target>
+</project>
