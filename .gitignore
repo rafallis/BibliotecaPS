@@ -26,6 +26,6 @@ hs_err_pid*
 # intelliJ files
 *.idea
 out/
-
+*.iml
 bibliotecaps.properties
 bibliotecaps.xml
