@@ -15,7 +15,9 @@ public class Biblioteca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        DBConnect connect = new DBConnect();
 
+        connect.getTestData();
 
     }
     
