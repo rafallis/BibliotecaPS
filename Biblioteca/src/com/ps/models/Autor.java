@@ -1,4 +1,4 @@
-package biblioteca;
+package com.ps.models;
 
 public class Autor {
 
