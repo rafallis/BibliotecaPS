@@ -14,14 +14,24 @@ import javax.swing.table.DefaultTableModel;
  * @author elrafa
  */
 public class InterfacePesquisa extends javax.swing.JFrame {
-
+    ArrayList<String[]> lista = new ArrayList<>();
+    String[] nomesColunas = {"Nome do Impresso", "Autor", "Quantidade"};
+    Boolean isOrNot = false;
     /**
      * Creates new form InterfacePesquisa
      */
     public InterfacePesquisa() {
         initComponents();
+        InitTable();
+        
     }
-
+    
+    public void InitTable(){
+        DefaultTableModel model = new DefaultTableModel(
+        lista.toArray(new String[lista.size()][]), nomesColunas);
+    jTable1.setModel(model);
+        //String[] nomesColunas = {"Nome do Impresso", "Autor", "Quantidade"};
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,17 +63,9 @@ public class InterfacePesquisa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome do Livro", "Autor", "Quantidade"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,21 +105,28 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String[] nomesColunas = {"nome", "endereco", "telefone"};
+    lista.removeAll(lista);
+    
+    //initTable();
     //essa lista terá as linhas da sua JTable, preenchi abaixo apenas como exemplo
-    ArrayList<String[]> lista = new ArrayList<>();
     //aqui você fará um while percorrendo seu result set e adicionando na lista
     //while(resultset.next()) {
-    lista.add(new String[]{"Joao", "rua um", "1234-5678"});
-    lista.add(new String[]{"Henrique", "rua 42", "1122-3344"});
-    lista.add(new String[]{"Manuel", "av 7 de setembro", "8765-4321"});
+    lista.add(new String[]{"O Príncipe", "MAQUIAVEL, N.", "3"});
+    lista.add(new String[]{"O Existencialismo é um Humanismo", "SARTRE, J. P.", "4"});
+    lista.add(new String[]{"Assim falava Zaratustra", "NIETZSCHE, F.", "1"});
+    if(isOrNot) lista.add(new String[]{"Fortaleza Digital", "BROWN, D.", "1"});
     DefaultTableModel model = new DefaultTableModel(
-    lista.toArray(new String[lista.size()][]), nomesColunas);
+        lista.toArray(new String[lista.size()][]), nomesColunas);
     jTable1.setModel(model);
+    
+    isOrNot = true;
     //for(int i=0; i < 20; i++) jTable1.add(new Object[]("NUMERO" + i,""+i, "TESTANDO" + i));
+ 
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
