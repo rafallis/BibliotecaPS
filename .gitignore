@@ -29,3 +29,5 @@ out/
 *.iml
 bibliotecaps.properties
 bibliotecaps.xml
+/Biblioteca/build/
+/Biblioteca/dist/
