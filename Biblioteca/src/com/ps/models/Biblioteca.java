@@ -5,6 +5,8 @@ import java.util.LinkedList;
 public class Biblioteca {
 
     private String campus;
+    
+    private int idBiblioteca;
 
     private String endereco;
 
@@ -38,5 +40,12 @@ public class Biblioteca {
         this.acervos = acervos;
     }
 
-    
+    public int getIdBiblioteca() {
+        return idBiblioteca;
+    }
+
+    public void setIdBiblioteca(int idBiblioteca) {
+        this.idBiblioteca = idBiblioteca;
+    }
+
 }

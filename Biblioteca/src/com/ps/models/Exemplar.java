@@ -6,6 +6,8 @@ public class Exemplar {
     private String local;
 
     private Impresso impresso;
+    
+    private boolean disponivel;
 
     public int getIdExemplar() {
         return idExemplar;
@@ -30,7 +32,13 @@ public class Exemplar {
     public void setImpresso(Impresso impresso) {
         this.impresso = impresso;
     }
-    
-    
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
 
 }
