@@ -1,13 +1,23 @@
-
 package biblioteca;
+
+import java.util.LinkedList;
 
 public class Biblioteca {
 
-    public static void main(String[] args) {
-        DBConnect connect = new DBConnect();
+	private String campus;
 
-        connect.getTestData();
+	private String endereco;
 
-    }
-    
+	private LinkedList<Acervo> acervos;
+
+	private Acervo[] acervo;
+
+	public void addAcervo(Acervo acervo) {
+
+	}
+
+	public void operation1() {
+
+	}
+
 }
