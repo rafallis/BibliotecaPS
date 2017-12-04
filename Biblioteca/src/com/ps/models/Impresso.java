@@ -15,8 +15,9 @@ public abstract class Impresso {
     
     private LinkedList<Autor> autores;
 
-	private LinkedList<Exemplar> exemplares;
+    private LinkedList<Exemplar> exemplares;
 
+    /******************* Métodos ******************/
     public int getId() {
         return id;
     }
@@ -66,7 +67,10 @@ public abstract class Impresso {
     }
 
     public void addExemplar(Exemplar exemplar) {
-
+        this.exemplares.add(exemplar);
     }
 
+    public int quantidadeExemplares(LinkedList<Exemplar> exemplares) {
+        return exemplares.size();
+    }
 }

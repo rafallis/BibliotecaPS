@@ -7,6 +7,12 @@ public class Exemplar {
 
     private Impresso impresso;
 
+    public Exemplar(int idExemplar, String local, Impresso impresso) {
+        this.idExemplar = idExemplar;
+        this.local = local;
+        this.impresso = impresso;
+    }
+    
     public int getIdExemplar() {
         return idExemplar;
     }
@@ -30,7 +36,5 @@ public class Exemplar {
     public void setImpresso(Impresso impresso) {
         this.impresso = impresso;
     }
-    
-    
 
 }
