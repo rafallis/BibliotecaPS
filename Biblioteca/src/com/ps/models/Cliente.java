@@ -1,4 +1,4 @@
-package biblioteca;
+package com.ps.models;
 
 public class Cliente {
 
@@ -30,7 +30,6 @@ public class Cliente {
 
     public void setTelefonePessoal(String telefonePessoal) {
         this.telefonePessoal = telefonePessoal;
-    }
-        
+    } 
         
 }

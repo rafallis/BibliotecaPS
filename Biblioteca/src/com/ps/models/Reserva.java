@@ -1,4 +1,4 @@
-package biblioteca;
+package com.ps.models;
 
 import java.util.Date;
 import java.util.Queue;
@@ -11,7 +11,7 @@ public class Reserva {
 
     private Cliente pessoa;
 
-    private Queue<Date> dataReserva;
+    private Date dataReserva;
 
     public int getIdReserva() {
         return idReserva;
@@ -37,11 +37,11 @@ public class Reserva {
         this.pessoa = pessoa;
     }
 
-    public Queue<Date> getDataReserva() {
+    public Date getDataReserva() {
         return dataReserva;
     }
 
-    public void setDataReserva(Queue<Date> dataReserva) {
+    public void setDataReserva(Date dataReserva) {
         this.dataReserva = dataReserva;
     }
 

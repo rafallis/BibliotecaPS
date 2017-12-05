@@ -1,11 +1,11 @@
-package biblioteca;
+package com.ps.models;
 public class Exemplar {
 
     private int idExemplar;
 
-    private String local;
-
     private Impresso impresso;
+
+    private boolean disponivel;
 
     public int getIdExemplar() {
         return idExemplar;
@@ -15,14 +15,6 @@ public class Exemplar {
         this.idExemplar = idExemplar;
     }
 
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
     public Impresso getImpresso() {
         return impresso;
     }
@@ -30,7 +22,13 @@ public class Exemplar {
     public void setImpresso(Impresso impresso) {
         this.impresso = impresso;
     }
-    
-    
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
 
 }

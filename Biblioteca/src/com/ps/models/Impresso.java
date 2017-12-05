@@ -1,4 +1,4 @@
-package biblioteca;
+package com.ps.models;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -15,8 +15,9 @@ public abstract class Impresso {
     
     private LinkedList<Autor> autores;
 
-	private LinkedList<Exemplar> exemplares;
+    private LinkedList<Exemplar> exemplares;
 
+    /******************* Métodos ******************/
     public int getId() {
         return id;
     }
@@ -66,7 +67,13 @@ public abstract class Impresso {
     }
 
     public void addExemplar(Exemplar exemplar) {
-
+        //exemplar.setIdExemplar( pegar maior id do banco e incrementar );
+        exemplares.add(exemplar);
     }
 
+    public int quantidadeExemplares(LinkedList<Exemplar> exemplares) {
+        // busca no banco por exemplares
+        // retornar a quantidade encontrada
+        return 0;
+    }
 }
