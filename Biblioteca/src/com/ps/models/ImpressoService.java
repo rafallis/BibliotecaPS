@@ -3,7 +3,7 @@ package com.ps.models;
 import java.util.Date;
 import java.util.LinkedList;
 
-public abstract class Impresso {
+public abstract class ImpressoService {
 
     private int id;
 

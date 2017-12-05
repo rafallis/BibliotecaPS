@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 
 public class Acervo {
 
-    private LinkedList<Impresso> impressos;
+    private LinkedList<ImpressoService> impressos;
 
-    private Impresso impresso;
+    private ImpressoService impresso;
     
     private int idAcervo;
   
@@ -22,19 +22,19 @@ public class Acervo {
         // retirar impresso
     }
 
-    public LinkedList<Impresso> getImpressos() {
+    public LinkedList<ImpressoService> getImpressos() {
         return impressos;
     }
 
-    public void setImpressos(LinkedList<Impresso> impressos) {
+    public void setImpressos(LinkedList<ImpressoService> impressos) {
         this.impressos = impressos;
     }
 
-    public Impresso getImpresso() {
+    public ImpressoService getImpresso() {
         return impresso;
     }
 
-    public void setImpresso(Impresso impresso) {
+    public void setImpresso(ImpressoService impresso) {
         this.impresso = impresso;
     }
 

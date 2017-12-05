@@ -3,7 +3,7 @@ public class Exemplar {
 
     private int idExemplar;
 
-    private Impresso impresso;
+    private ImpressoService impresso;
 
     private boolean disponivel;
 
@@ -15,11 +15,11 @@ public class Exemplar {
         this.idExemplar = idExemplar;
     }
 
-    public Impresso getImpresso() {
+    public ImpressoService getImpresso() {
         return impresso;
     }
 
-    public void setImpresso(Impresso impresso) {
+    public void setImpresso(ImpressoService impresso) {
         this.impresso = impresso;
     }
 
