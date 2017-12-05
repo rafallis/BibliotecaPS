@@ -15,7 +15,7 @@ public class Revista extends Impresso {
     
     private LinkedList<Autor> autores;
     
-    public Revista(int id, String titulo, Editora editora, Date datapublicacao, LinkedList<Autor> autores, LinkedList<Exemplar> exemplares) {
+    public Revista(int id, String titulo, Editora editora, Date datapublicacao, LinkedList<Autor> autores) {
         this.id = id;
         this.titulo = titulo;
         this.editora = editora;

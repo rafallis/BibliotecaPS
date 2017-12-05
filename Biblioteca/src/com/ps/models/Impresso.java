@@ -67,10 +67,13 @@ public abstract class Impresso {
     }
 
     public void addExemplar(Exemplar exemplar) {
-        this.exemplares.add(exemplar);
+        //exemplar.setIdExemplar( pegar maior id do banco e incrementar );
+        exemplares.add(exemplar);
     }
 
     public int quantidadeExemplares(LinkedList<Exemplar> exemplares) {
-        return exemplares.size();
+        // busca no banco por exemplares
+        // retornar a quantidade encontrada
+        return 0;
     }
 }
