@@ -30,7 +30,6 @@ public class Cliente {
 
     public void setTelefonePessoal(String telefonePessoal) {
         this.telefonePessoal = telefonePessoal;
-    }
-        
+    } 
         
 }
