@@ -9,15 +9,14 @@ public abstract class Impresso {
 
     private String titulo;
 
-    private Editora editora;
+    private String editora;
 
     private Date dataPublicacao;
     
-    private LinkedList<Autor> autores;
+    private String autor;
 
     private LinkedList<Exemplar> exemplares;
 
-    /******************* Métodos ******************/
     public int getId() {
         return id;
     }
@@ -34,11 +33,11 @@ public abstract class Impresso {
         this.titulo = titulo;
     }
 
-    public Editora getEditora() {
+    public String getEditora() {
         return editora;
     }
 
-    public void setEditora(Editora editora) {
+    public void setEditora(String editora) {
         this.editora = editora;
     }
 
@@ -50,12 +49,12 @@ public abstract class Impresso {
         this.dataPublicacao = dataPublicacao;
     }
 
-    public LinkedList<Autor> getAutores() {
-        return autores;
+    public String getAutor() {
+        return autor;
     }
 
-    public void setAutores(LinkedList<Autor> autores) {
-        this.autores = autores;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public LinkedList<Exemplar> getExemplares() {
@@ -64,16 +63,5 @@ public abstract class Impresso {
 
     public void setExemplares(LinkedList<Exemplar> exemplares) {
         this.exemplares = exemplares;
-    }
-
-    public void addExemplar(Exemplar exemplar) {
-        //exemplar.setIdExemplar( pegar maior id do banco e incrementar );
-        exemplares.add(exemplar);
-    }
-
-    public int quantidadeExemplares(LinkedList<Exemplar> exemplares) {
-        // busca no banco por exemplares
-        // retornar a quantidade encontrada
-        return 0;
-    }
+    }  
 }
