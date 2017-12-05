@@ -6,12 +6,15 @@ import javax.swing.JOptionPane;
 
 public class Acervo {
 
-	private LinkedList<Impresso> impressos;
+    private LinkedList<Impresso> impressos;
 
-	private Impresso impresso;
+    private Impresso impresso;
+    
+    private int idAcervo;
+  
 
 	public void addImpresso(int id, String titulo, Editora editora, Date datapublicacao, LinkedList<Autor> autores, int tipo) {
-            switch(tipo){
+    switch(tipo){
                 case 1: //se for livro
                     impresso = new Livro(id, titulo, editora, datapublicacao, autores);
                     break;
@@ -30,8 +33,32 @@ public class Acervo {
             impressos.add(impresso);
 	}
         
-        public void removeImpresso(int id) {
-            // buscar no banco
-            // retirar impresso
-        }
+    public void removeImpresso(int id) {
+        // buscar no banco
+        // retirar impresso
+    }
+
+    public LinkedList<Impresso> getImpressos() {
+        return impressos;
+    }
+
+    public void setImpressos(LinkedList<Impresso> impressos) {
+        this.impressos = impressos;
+    }
+
+    public Impresso getImpresso() {
+        return impresso;
+    }
+
+    public void setImpresso(Impresso impresso) {
+        this.impresso = impresso;
+    }
+
+    public int getIdAcervo() {
+        return idAcervo;
+    }
+
+    public void setIdAcervo(int idAcervo) {
+        this.idAcervo = idAcervo;
+    }
 }
