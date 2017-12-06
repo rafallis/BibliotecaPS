@@ -20,7 +20,7 @@ public class ClienteData {
         System.out.println("AQ0");
         try {
             //System.out.println("AQ1");
-            DBConnect.getConnection();
+            DBConnect.getInstance().getConnection();
             //System.out.println("AQ2");
             String query = "SELECT * FROM Cliente";
             
