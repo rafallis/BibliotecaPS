@@ -33,7 +33,7 @@ public class ImpressoData {
             st = conn.createStatement();
             
             // alterar pesquisa no banco
-            String query = "SELECT * FROM Impresso NATURAL JOIN Exemplar WHERE Título='" + IS.getTitulo() + "'";
+            String query = "SELECT * FROM Impresso NATURAL JOIN Exemplar WHERE Título like '%" + IS.getTitulo() + "%'";
             rs = st.executeQuery(query);
             
             System.out.println("Pesquisando impresso...");
