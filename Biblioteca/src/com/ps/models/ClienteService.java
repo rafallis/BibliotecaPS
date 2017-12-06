@@ -53,4 +53,8 @@ public class ClienteService {
     public void setTelefonePessoal(String telefonePessoal) {
         this.telefonePessoal = telefonePessoal;
     }
+    
+    public String getSenha() {
+        return this.senha;
+    }
 }

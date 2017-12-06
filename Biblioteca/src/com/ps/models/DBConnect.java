@@ -4,10 +4,11 @@ import java.sql.*;
 
 public class DBConnect {
 
-    private Connection con;
-    private Statement st;
-    private ResultSet rs;
-
+    private static Connection con;
+    //private static Statement st;
+    //private static ResultSet rs;
+    
+    /*
     public DBConnect() {
 
         try {
@@ -23,7 +24,18 @@ public class DBConnect {
         }
 
     }
-
+    */
+    public static Connection getConnection() {
+        if(con == null) {
+            try {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca","root","password");
+            } catch (SQLException e) {
+                System.out.println("Não foi possível conectar ao banco de dados.");
+            }
+        }
+        return con;
+    }
+    /*
     public void getTestData() {
         try {
 
@@ -41,4 +53,5 @@ public class DBConnect {
             System.out.println(e);
         }
     }
+    */
 }
