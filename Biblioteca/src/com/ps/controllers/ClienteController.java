@@ -17,13 +17,15 @@ public class ClienteController {
     
     public void fazerLogin(int matricula, String senha) {
         //verificação de integridade
-        
         ClienteService service = new ClienteService(matricula, senha);
+        
+        
         if(service.validaCliente()) {
             //chamar tela principal
+            
             JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!");
             
-            InterfacePesquisa newInterface = new InterfacePesquisa();
+            //InterfacePesquisa newInterface = new InterfacePesquisa();
         }
         
     }
