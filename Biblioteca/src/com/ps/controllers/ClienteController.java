@@ -6,6 +6,8 @@
 package com.ps.controllers;
 
 import com.ps.models.ClienteService;
+import com.ps.views.InterfacePesquisa;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +21,9 @@ public class ClienteController {
         ClienteService service = new ClienteService(matricula, senha);
         if(service.validaCliente()) {
             //chamar tela principal
+            JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!");
+            
+            InterfacePesquisa newInterface = new InterfacePesquisa();
         }
         
     }

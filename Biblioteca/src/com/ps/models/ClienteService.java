@@ -24,10 +24,9 @@ public class ClienteService {
     
     public boolean validaCliente() {
         ClienteData cd = new ClienteData();
-        cd.validaUsuario(this);
-        
         //se tudo der certo retorna
-        return true;
+
+        return cd.validaUsuario(this);
     }
     
     public String getNome() {
