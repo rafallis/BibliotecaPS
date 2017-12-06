@@ -6,7 +6,7 @@ public class Retirada {
 
     private int idRetirada;
 
-    private Exemplar exemplar;
+    private ExemplarService exemplar;
 
     private Date dataRetirada;
 
@@ -20,11 +20,11 @@ public class Retirada {
         this.idRetirada = idRetirada;
     }
 
-    public Exemplar getExemplar() {
+    public ExemplarService getExemplar() {
         return exemplar;
     }
 
-    public void setExemplar(Exemplar exemplar) {
+    public void setExemplar(ExemplarService exemplar) {
         this.exemplar = exemplar;
     }
 

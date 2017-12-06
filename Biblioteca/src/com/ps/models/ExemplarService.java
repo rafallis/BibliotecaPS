@@ -1,5 +1,8 @@
 package com.ps.models;
-public class Exemplar {
+
+import java.util.Date;
+
+public class ExemplarService {
 
     private int idExemplar;
 
@@ -7,6 +10,10 @@ public class Exemplar {
 
     private boolean disponivel;
 
+    public ExemplarService(int id, String titulo, String editora, Date datapublicacao, String autores, int tipo) {
+        
+    }
+    
     public int getIdExemplar() {
         return idExemplar;
     }

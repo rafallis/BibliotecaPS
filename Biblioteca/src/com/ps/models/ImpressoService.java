@@ -1,9 +1,8 @@
 package com.ps.models;
 
 import java.util.Date;
-import java.util.LinkedList;
 
-public abstract class ImpressoService {
+public class ImpressoService {
 
     private int id;
 
@@ -13,9 +12,20 @@ public abstract class ImpressoService {
 
     private Date dataPublicacao;
     
-    private String autor;
-
-    private LinkedList<Exemplar> exemplares;
+    private String autores;
+    
+    private String tipo;
+    
+    public ImpressoService(int id, String titulo, String editora, Date dataPublicacao, String autores, String tipo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.editora = editora;
+        this.dataPublicacao = dataPublicacao;
+        this.autores = autores;
+        this.tipo = tipo;
+        
+        //chamar ImpressoData
+    }
 
     public int getId() {
         return id;
@@ -50,18 +60,10 @@ public abstract class ImpressoService {
     }
 
     public String getAutor() {
-        return autor;
+        return autores;
     }
 
     public void setAutor(String autor) {
-        this.autor = autor;
+        this.autores = autor;
     }
-
-    public LinkedList<Exemplar> getExemplares() {
-        return exemplares;
-    }
-
-    public void setExemplares(LinkedList<Exemplar> exemplares) {
-        this.exemplares = exemplares;
-    }  
 }
