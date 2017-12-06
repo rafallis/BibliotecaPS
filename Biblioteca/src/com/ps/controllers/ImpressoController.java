@@ -7,6 +7,7 @@ package com.ps.controllers;
 
 import com.ps.models.ImpressoService;
 import java.util.Date;
+import java.sql.ResultSet;
 
 /**
  *
@@ -20,4 +21,17 @@ public class ImpressoController {
         //trocar dados com o banco
     }
     
+    public ResultSet buscaImpresso(String nome) {
+        ImpressoService is = new ImpressoService(nome);
+        ResultSet livro = is.buscaImpresso(nome);
+        
+        return livro;
+    }
+    
+    public ResultSet buscaImpresso(String nome, String autor) {
+        ImpressoService is = new ImpressoService(autor, autor);
+        ResultSet livro = is.buscaImpresso(nome, autor);
+        
+        return livro;
+    }
 }

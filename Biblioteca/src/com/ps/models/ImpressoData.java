@@ -5,17 +5,17 @@
  */
 package com.ps.models;
 
+import java.sql.*;
+
 /**
  *
  * @author rafallis
  */
 public class ImpressoData {
-    public ImpressoData(ImpressoService impresso){
-        //ENVIAR AO BANCO DE DADOS ESTA COISA MARAVILHOSA ABAIXO;
-        insertInDataBase(impresso);
-        
-        
-    }
+    
+    private Connection conn;
+    private Statement st;
+    private ResultSet rs;
     
     public void insertInDataBase(ImpressoService impresso){
         //USAR SQL E BLABLABLA
@@ -24,5 +24,26 @@ public class ImpressoData {
         impresso.getEditora();
         impresso.getId();
         impresso.getTitulo();
+    }
+    
+    public ResultSet buscaImpresso(ImpressoService IS) {
+        
+        try {
+            conn = DBConnect.getInstance().getConnection();
+            st = conn.createStatement();
+            
+            // alterar pesquisa no banco
+            String query = "SELECT * FROM Impresso NATURAL JOIN Exemplar WHERE Título like '%" + IS.getTitulo() + "%'";
+            rs = st.executeQuery(query);
+            
+            System.out.println("Pesquisando impresso...");
+            
+            return rs;
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return null;
     }
 }

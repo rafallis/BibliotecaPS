@@ -1,6 +1,7 @@
 package com.ps.models;
 
 import java.util.Date;
+import java.sql.ResultSet;
 
 public class ImpressoService {
 
@@ -16,6 +17,15 @@ public class ImpressoService {
     
     private String tipo;
     
+    public ImpressoService(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    public ImpressoService(String titulo, String autores) {
+        this.titulo = titulo;
+        this.autores = autores;
+    }
+    
     public ImpressoService(int id, String titulo, String editora, Date dataPublicacao, String autores, String tipo) {
         this.id = id;
         this.titulo = titulo;
@@ -24,9 +34,29 @@ public class ImpressoService {
         this.autores = autores;
         this.tipo = tipo;
         
-        ImpressoData dbImpresso = new ImpressoData(this);
+        //ImpressoData dbImpresso = new ImpressoData(this);
         
         //chamar ImpressoData
+    }
+    
+    public ResultSet buscaImpresso(String nome) {
+        ResultSet impresso = null;
+        
+        ImpressoData id = new ImpressoData();
+        
+        impresso = id.buscaImpresso(this);
+        
+        return impresso;
+    }
+    
+    public ResultSet buscaImpresso(String nome, String autor) {
+        ResultSet impresso;
+        
+        ImpressoData id = new ImpressoData();
+        
+        impresso = id.buscaImpresso(this);
+        
+        return impresso;
     }
 
     public int getId() {
