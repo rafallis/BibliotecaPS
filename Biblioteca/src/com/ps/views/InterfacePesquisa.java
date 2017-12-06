@@ -8,7 +8,10 @@ package com.ps.views;
 import com.ps.controllers.ImpressoController;
 import java.awt.List;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -106,6 +109,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("empty-statement")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     lista.removeAll(lista);
     
@@ -113,25 +117,41 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     ImpressoController ic = new ImpressoController();
     ResultSet resultado = ic.buscaImpresso(jTextField1.getText());
     
-    
-    
-    //initTable();
-    //essa lista terá as linhas da sua JTable, preenchi abaixo apenas como exemplo
-    //aqui você fará um while percorrendo seu result set e adicionando na lista
-    //while(resultset.next()) {
-    /*
-    lista.add(new String[]{"O Príncipe", "MAQUIAVEL, N.", "3"});
-    lista.add(new String[]{"O Existencialismo é um Humanismo", "SARTRE, J. P.", "4"});
-    lista.add(new String[]{"Assim falava Zaratustra", "NIETZSCHE, F.", "1"});
-    if(isOrNot) lista.add(new String[]{"Fortaleza Digital", "BROWN, D.", "1"});
-    DefaultTableModel model = new DefaultTableModel(
-        lista.toArray(new String[lista.size()][]), nomesColunas);
-    jTable1.setModel(model);
-    
-    isOrNot = true;
-    */
-    
-    //for(int i=0; i < 20; i++) jTable1.add(new Object[]("NUMERO" + i,""+i, "TESTANDO" + i));
+    String[] nomesColunas = {"Nome", "Autor", "Disponibilidade"};
+    int i=0;
+        try {
+            while(resultado.next()){
+                lista.add(new String[]{
+                    resultado.getString("Título"),
+                    resultado.getString("Autor"),
+                    resultado.getString("Quantidade")});
+                i++;
+            }
+            
+            DefaultTableModel model = new DefaultTableModel(
+            lista.toArray(new String[lista.size()][]), nomesColunas);
+            jTable1.setModel(model);
+            
+            //initTable();
+            //essa lista terá as linhas da sua JTable, preenchi abaixo apenas como exemplo
+            //aqui você fará um while percorrendo seu result set e adicionando na lista
+            //while(resultset.next()) {
+            /*
+            lista.add(new String[]{"O Príncipe", "MAQUIAVEL, N.", "3"});
+            lista.add(new String[]{"O Existencialismo é um Humanismo", "SARTRE, J. P.", "4"});
+            lista.add(new String[]{"Assim falava Zaratustra", "NIETZSCHE, F.", "1"});
+            if(isOrNot) lista.add(new String[]{"Fortaleza Digital", "BROWN, D.", "1"});
+            DefaultTableModel model = new DefaultTableModel(
+            lista.toArray(new String[lista.size()][]), nomesColunas);
+            jTable1.setModel(model);
+            
+            isOrNot = true;
+            */
+            
+            //for(int i=0; i < 20; i++) jTable1.add(new Object[]("NUMERO" + i,""+i, "TESTANDO" + i));
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfacePesquisa.class.getName()).log(Level.SEVERE, null, ex);
+        }
  
 
     }//GEN-LAST:event_jButton1ActionPerformed
