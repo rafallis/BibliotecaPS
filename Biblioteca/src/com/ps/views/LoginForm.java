@@ -19,7 +19,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
-        DBConnect DBConnection = new DBConnect();
+        //DBConnect DBConnection = new DBConnect();
     }
 
     /**
@@ -125,6 +125,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ClienteController cc = new ClienteController();
+        System.out.println(loginTextField.getText() + " EOQ " + passwordField.getText());
         cc.fazerLogin(Integer.parseInt(loginTextField.getText()), passwordField.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -19,8 +19,10 @@ public class ClienteController {
         //verificação de integridade
         ClienteService service = new ClienteService(matricula, senha);
         
-        
-        if(service.validaCliente()) {
+        System.out.println(matricula + " EOQ2 " + senha);
+        Boolean state = service.validaCliente();
+        System.out.println(state);
+        if(state != null && state) {
             //chamar tela principal
             
             JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!");
