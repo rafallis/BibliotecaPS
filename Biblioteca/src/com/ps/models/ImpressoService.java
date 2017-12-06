@@ -24,6 +24,8 @@ public class ImpressoService {
         this.autores = autores;
         this.tipo = tipo;
         
+        ImpressoData dbImpresso = new ImpressoData(this);
+        
         //chamar ImpressoData
     }
 

@@ -10,5 +10,19 @@ package com.ps.models;
  * @author rafallis
  */
 public class ImpressoData {
+    public ImpressoData(ImpressoService impresso){
+        //ENVIAR AO BANCO DE DADOS ESTA COISA MARAVILHOSA ABAIXO;
+        insertInDataBase(impresso);
+        
+        
+    }
     
+    public void insertInDataBase(ImpressoService impresso){
+        //USAR SQL E BLABLABLA
+        impresso.getAutor();
+        impresso.getDataPublicacao();
+        impresso.getEditora();
+        impresso.getId();
+        impresso.getTitulo();
+    }
 }
