@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +38,8 @@ public class InterfacePesquisa extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel(
         lista.toArray(new String[lista.size()][]), nomesColunas);
     jTable1.setModel(model);
+    
+    
         //String[] nomesColunas = {"Nome do Impresso", "Autor", "Quantidade"};
     }
     /**
@@ -75,6 +80,11 @@ public class InterfacePesquisa extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Insira o Id do impresso");
@@ -187,6 +197,13 @@ public class InterfacePesquisa extends javax.swing.JFrame {
  
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        if(evt.getClickCount() == 2) {
+            String value = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            jTextField2.setText(value);
+        }
+    }//GEN-LAST:event_jTable1MousePressed
 
     
     
