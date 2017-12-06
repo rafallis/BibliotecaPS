@@ -20,26 +20,19 @@ public class ClienteData {
         //vazer pesquisa no banco
         System.out.println("AQ0");
         try {
-            //System.out.println("AQ1");
+            
             conn = DBConnect.getInstance().getConnection();
             st = conn.createStatement();
-            //System.out.println("AQ2");
             String query = "SELECT * FROM Cliente";
-            
             rs = st.executeQuery(query);
-            
-            //System.out.println("AQ3");
 
             System.out.println("Procurando usuário.....");
             while(rs.next()) {
-                System.out.println("AR");
-                System.out.println(rs.getString("Matrícula") +" EOQ 3 " +rs.getString("Senha") );
                 if(Integer.parseInt(rs.getString("Matrícula")) == cService.getMatricula()) {
                     if(rs.getString("Senha").equals(cService.getSenha())){
                         return true;
                     }
                 }
-                //return false;
             }
 
         } catch (Exception e) {

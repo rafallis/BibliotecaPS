@@ -9,26 +9,7 @@ public class DBConnect {
     private String url = "jdbc:mysql://localhost:3306/biblioteca";
     private String username = "root";
     private String password = "password";
-    //private static Statement st;
-    //private static ResultSet rs;
     
-    /*
-    public DBConnect() {
-
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca","root","password");
-
-            st = con.createStatement();
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-    }
-    */
     private DBConnect() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");

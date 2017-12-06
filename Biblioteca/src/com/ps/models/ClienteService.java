@@ -25,7 +25,6 @@ public class ClienteService {
     public boolean validaCliente() {
         ClienteData cd = new ClienteData();
         //se tudo der certo retorna
-        System.out.println("EAE BOY");
         return cd.validaUsuario(this);
     }
     
