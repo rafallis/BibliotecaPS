@@ -27,13 +27,13 @@ public class ImpressoData {
     }
     
     public ResultSet buscaImpresso(ImpressoService IS) {
-        String livro="", autor="", disponibilidade="";
         
         try {
             conn = DBConnect.getInstance().getConnection();
             st = conn.createStatement();
-            // buscar aqui
-            String query = "SELECT * FROM Impresso";
+            
+            // alterar pesquisa no banco
+            String query = "SELECT * FROM Impresso NATURAL JOIN Exemplar WHERE Título='" + IS.getTitulo() + "'";
             rs = st.executeQuery(query);
             
             System.out.println("Pesquisando impresso...");

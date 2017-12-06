@@ -124,7 +124,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
                 lista.add(new String[]{
                     resultado.getString("Título"),
                     resultado.getString("Autor"),
-                    resultado.getString("Quantidade")});
+                    resultado.getString("disponivel")});
                 i++;
             }
             
