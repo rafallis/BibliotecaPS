@@ -5,7 +5,9 @@
  */
 package com.ps.views;
 
+import com.ps.controllers.ImpressoController;
 import java.awt.List;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -107,10 +109,17 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     lista.removeAll(lista);
     
+    
+    ImpressoController ic = new ImpressoController();
+    ResultSet resultado = ic.buscaImpresso(jTextField1.getText());
+    
+    
+    
     //initTable();
     //essa lista terá as linhas da sua JTable, preenchi abaixo apenas como exemplo
     //aqui você fará um while percorrendo seu result set e adicionando na lista
     //while(resultset.next()) {
+    /*
     lista.add(new String[]{"O Príncipe", "MAQUIAVEL, N.", "3"});
     lista.add(new String[]{"O Existencialismo é um Humanismo", "SARTRE, J. P.", "4"});
     lista.add(new String[]{"Assim falava Zaratustra", "NIETZSCHE, F.", "1"});
@@ -120,6 +129,8 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     jTable1.setModel(model);
     
     isOrNot = true;
+    */
+    
     //for(int i=0; i < 20; i++) jTable1.add(new Object[]("NUMERO" + i,""+i, "TESTANDO" + i));
  
 

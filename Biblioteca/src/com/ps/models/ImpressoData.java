@@ -26,7 +26,7 @@ public class ImpressoData {
         impresso.getTitulo();
     }
     
-    public String buscaImpresso(ImpressoService IS) {
+    public ResultSet buscaImpresso(ImpressoService IS) {
         String livro="", autor="", disponibilidade="";
         
         try {
@@ -37,22 +37,13 @@ public class ImpressoData {
             rs = st.executeQuery(query);
             
             System.out.println("Pesquisando impresso...");
-            while(rs.next()) {
-                livro = rs.getString("Título");
-                autor = rs.getString("");
-                disponibilidade = rs.getString("");
-                
-                if(livro.equals(IS.getTitulo())) break;
-            }
             
-            String result = livro + ":" + autor + ":" + disponibilidade;
-            return result;
-            
+            return rs;
             
         } catch (Exception e) {
             System.out.println(e);
         }
         
-        return "";
+        return null;
     }
 }

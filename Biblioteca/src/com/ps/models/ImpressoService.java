@@ -1,6 +1,7 @@
 package com.ps.models;
 
 import java.util.Date;
+import java.sql.ResultSet;
 
 public class ImpressoService {
 
@@ -38,16 +39,18 @@ public class ImpressoService {
         //chamar ImpressoData
     }
     
-    public String buscaImpresso(String nome) {
-        String impresso = null;
+    public ResultSet buscaImpresso(String nome) {
+        ResultSet impresso = null;
         
+        ImpressoData id = new ImpressoData();
         
+        impresso = id.buscaImpresso(this);
         
         return impresso;
     }
     
-    public String buscaImpresso(String nome, String autor) {
-        String impresso = null;
+    public ResultSet buscaImpresso(String nome, String autor) {
+        ResultSet impresso;
         
         ImpressoData id = new ImpressoData();
         
