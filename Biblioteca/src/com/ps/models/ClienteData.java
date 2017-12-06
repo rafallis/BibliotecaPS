@@ -12,6 +12,7 @@ import java.sql.*;
  */
 public class ClienteData {
     
+    private Connection conn;
     private Statement st;
     private ResultSet rs;
     
@@ -20,14 +21,13 @@ public class ClienteData {
         System.out.println("AQ0");
         try {
             //System.out.println("AQ1");
-            DBConnect.getInstance().getConnection();
+            conn = DBConnect.getInstance().getConnection();
+            st = conn.createStatement();
             //System.out.println("AQ2");
             String query = "SELECT * FROM Cliente";
             
             rs = st.executeQuery(query);
             
-            
-          
             //System.out.println("AQ3");
 
             System.out.println("Procurando usuário.....");
