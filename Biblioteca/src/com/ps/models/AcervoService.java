@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
-public class Acervo {
+public class AcervoService {
 
     private LinkedList<ImpressoService> impressos;
 
