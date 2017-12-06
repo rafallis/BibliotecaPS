@@ -125,7 +125,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ClienteController cc = new ClienteController();
-        cc.fazerLogin(Integer.parseInt(loginTextField.getText()), passwordField.getText());
+        if(!cc.fazerLogin(Integer.parseInt(loginTextField.getText()), passwordField.getText())) this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

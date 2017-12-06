@@ -7,6 +7,7 @@ package com.ps.controllers;
 
 import com.ps.models.ClienteService;
 import com.ps.views.InterfacePesquisa;
+import com.ps.views.InterfacePrincipalPesquisa;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ClienteController {
     
-    public void fazerLogin(int matricula, String senha) {
+    public Boolean fazerLogin(int matricula, String senha) {
         //verificação de integridade
         ClienteService service = new ClienteService(matricula, senha);
         
@@ -26,8 +27,10 @@ public class ClienteController {
             
             JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!");
             
-            //InterfacePesquisa newInterface = new InterfacePesquisa();
+            InterfacePrincipalPesquisa newInterface = new InterfacePrincipalPesquisa();
+            
+            return false;
         }
-        
+        return true;
     }
 }

@@ -18,7 +18,6 @@ public class ClienteData {
     
     public boolean validaUsuario(ClienteService cService) {
         //vazer pesquisa no banco
-        System.out.println("AQ0");
         try {
             
             conn = DBConnect.getInstance().getConnection();
