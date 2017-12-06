@@ -1,5 +1,6 @@
 package com.ps.controllers;
 import com.ps.controllers.ImpressoController;
+import com.ps.models.AcervoService;
 import java.util.Date;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,5 +18,6 @@ public class AcervoController {
         ImpressoController impresso = new ImpressoController();
         
         impresso.adicionaImpresso(id, titulo, editora, dataPublicacao, autores, tipo);     
-    } 
+    }
+    
 }

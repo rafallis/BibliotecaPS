@@ -16,6 +16,15 @@ public class ImpressoService {
     
     private String tipo;
     
+    public ImpressoService(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    public ImpressoService(String titulo, String autores) {
+        this.titulo = titulo;
+        this.autores = autores;
+    }
+    
     public ImpressoService(int id, String titulo, String editora, Date dataPublicacao, String autores, String tipo) {
         this.id = id;
         this.titulo = titulo;
@@ -24,9 +33,27 @@ public class ImpressoService {
         this.autores = autores;
         this.tipo = tipo;
         
-        ImpressoData dbImpresso = new ImpressoData(this);
+        //ImpressoData dbImpresso = new ImpressoData(this);
         
         //chamar ImpressoData
+    }
+    
+    public String buscaImpresso(String nome) {
+        String impresso = null;
+        
+        
+        
+        return impresso;
+    }
+    
+    public String buscaImpresso(String nome, String autor) {
+        String impresso = null;
+        
+        ImpressoData id = new ImpressoData();
+        
+        impresso = id.buscaImpresso(this);
+        
+        return impresso;
     }
 
     public int getId() {
