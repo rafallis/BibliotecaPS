@@ -6,28 +6,13 @@ import javax.swing.JOptionPane;
 
 public class AcervoService {
 
-    private LinkedList<ImpressoService> impressos;
-
     private ImpressoService impresso;
     
     private int idAcervo;
-  
-
-    public void addImpresso(int id, String titulo, String editora, Date datapublicacao, String autores, int tipo) {
-        
-    }
         
     public void removeImpresso(int id) {
         // buscar no banco
         // retirar impresso
-    }
-
-    public LinkedList<ImpressoService> getImpressos() {
-        return impressos;
-    }
-
-    public void setImpressos(LinkedList<ImpressoService> impressos) {
-        this.impressos = impressos;
     }
 
     public ImpressoService getImpresso() {

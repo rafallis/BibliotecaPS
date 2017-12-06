@@ -9,10 +9,6 @@ public class ExemplarService {
     private ImpressoService impresso;
 
     private boolean disponivel;
-
-    public ExemplarService(int id, String titulo, String editora, Date datapublicacao, String autores, int tipo) {
-        
-    }
     
     public int getIdExemplar() {
         return idExemplar;
