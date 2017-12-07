@@ -46,4 +46,43 @@ public class ImpressoData {
         
         return null;
     }
+    
+    public boolean verificaDisponibilidadeImpresso(ImpressoService IS) {
+        
+        try {
+            conn = DBConnect.getInstance().getConnection();
+            st = conn.createStatement();
+            
+            String query = "SELECT disponivel FROM Exemplar WHERE idExemplar='" +IS.getId()+ "'";
+            rs = st.executeQuery(query);
+            System.out.println("Verificando disponibilidade...");
+            
+            if(rs.getString("disponibilidade").equals("1")) {
+                return true;
+            } else {
+                return false;
+            }
+            
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+    
+    public boolean atualizaDisponibilidade(ImpressoService IS) {
+        try {
+            conn = DBConnect.getInstance().getConnection();
+            st = conn.createStatement();
+            
+            String query = "";
+            rs = st.executeQuery(query);
+            System.out.println("Atualizando disponibilidade do impresso...");
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 }

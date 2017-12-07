@@ -8,6 +8,7 @@ package com.ps.controllers;
 import com.ps.models.ImpressoService;
 import java.util.Date;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,5 +34,16 @@ public class ImpressoController {
         ResultSet livro = is.buscaImpresso(nome, autor);
         
         return livro;
+    }
+    
+    public boolean emprestaImpresso(int id) {
+        ImpressoService is = new ImpressoService(id);
+        if(is.emprestaImpresso(id)) {
+            JOptionPane.showMessageDialog(null, "Livro emprestado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível emprestar o livro.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
     }
 }

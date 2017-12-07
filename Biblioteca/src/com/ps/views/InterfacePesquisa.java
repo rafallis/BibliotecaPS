@@ -31,12 +31,11 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     public InterfacePesquisa() {
         initComponents();
         InitTable();
-        
     }
     
     public void InitTable(){
         DefaultTableModel model = new DefaultTableModel(
-        lista.toArray(new String[lista.size()][]), nomesColunas);
+            lista.toArray(new String[lista.size()][]), nomesColunas);
     jTable1.setModel(model);
     
     
@@ -92,6 +91,11 @@ public class InterfacePesquisa extends javax.swing.JFrame {
         jLabel3.setText("EMPRÉSTIMO");
 
         jButton2.setText("Solicitar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,9 +173,15 @@ public class InterfacePesquisa extends javax.swing.JFrame {
                     resultado.getString("disponivel")});
                 i++;
             }
-            
+       
             DefaultTableModel model = new DefaultTableModel(
-            lista.toArray(new String[lista.size()][]), nomesColunas);
+            lista.toArray(new String[lista.size()][]), nomesColunas) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            
             jTable1.setModel(model);
             
             //initTable();
@@ -204,6 +214,11 @@ public class InterfacePesquisa extends javax.swing.JFrame {
             jTextField2.setText(value);
         }
     }//GEN-LAST:event_jTable1MousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ImpressoController ic = new ImpressoController();
+        ic.emprestaImpresso(Integer.parseInt(jTextField2.getText()));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     

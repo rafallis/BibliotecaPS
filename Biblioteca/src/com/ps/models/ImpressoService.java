@@ -26,6 +26,10 @@ public class ImpressoService {
         this.autores = autores;
     }
     
+    public ImpressoService(int id) {
+        this.id = id;
+    }
+    
     public ImpressoService(int id, String titulo, String editora, Date dataPublicacao, String autores, String tipo) {
         this.id = id;
         this.titulo = titulo;
@@ -57,6 +61,17 @@ public class ImpressoService {
         impresso = id.buscaImpresso(this);
         
         return impresso;
+    }
+    
+    public boolean emprestaImpresso(int idImpresso) {
+        ImpressoData id = new ImpressoData();
+        
+        if(id.verificaDisponibilidadeImpresso(this)) {
+            id.atualizaDisponibilidade(this);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getId() {
