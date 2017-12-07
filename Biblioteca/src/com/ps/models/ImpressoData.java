@@ -48,16 +48,19 @@ public class ImpressoData {
     }
     
     public boolean verificaDisponibilidadeImpresso(ImpressoService IS) {
-        
         try {
             conn = DBConnect.getInstance().getConnection();
             st = conn.createStatement();
             
-            String query = "SELECT disponivel FROM Exemplar WHERE idExemplar='" +IS.getId()+ "'";
+            String query = "SELECT disponivel FROM Exemplar WHERE idExemplar=" +IS.getId();
+            System.out.println(query);
+            
             rs = st.executeQuery(query);
+            rs.next();
+            
             System.out.println("Verificando disponibilidade...");
             
-            if(rs.getString("disponivel").equals("1")) {
+            if(Integer.parseInt(rs.getString("disponivel"))==1) {
                 return true;
             } else {
                 return false;
@@ -67,6 +70,7 @@ public class ImpressoData {
         } catch (Exception e) {
             System.out.println(e);
         }
+        
         return false;
     }
     

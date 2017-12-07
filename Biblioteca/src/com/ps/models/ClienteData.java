@@ -24,7 +24,7 @@ public class ClienteData {
             st = conn.createStatement();
             String query = "SELECT * FROM Cliente";
             rs = st.executeQuery(query);
-
+            
             System.out.println("Procurando usuário.....");
             while(rs.next()) {
                 if(Integer.parseInt(rs.getString("Matrícula")) == cService.getMatricula()) {
