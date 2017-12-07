@@ -57,7 +57,7 @@ public class ImpressoData {
             rs = st.executeQuery(query);
             System.out.println("Verificando disponibilidade...");
             
-            if(rs.getString("disponibilidade").equals("1")) {
+            if(rs.getString("disponivel").equals("1")) {
                 return true;
             } else {
                 return false;
@@ -75,7 +75,7 @@ public class ImpressoData {
             conn = DBConnect.getInstance().getConnection();
             st = conn.createStatement();
             
-            String query = "";
+            String query = "UPDATE Exemplar SET disponivel = 0 WHERE idExemplar='" +IS.getId()+ "'";
             rs = st.executeQuery(query);
             System.out.println("Atualizando disponibilidade do impresso...");
             
