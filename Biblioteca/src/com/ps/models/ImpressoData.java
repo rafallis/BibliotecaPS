@@ -80,9 +80,9 @@ public class ImpressoData {
             st = conn.createStatement();
             
             String query = "UPDATE Exemplar SET disponivel = 0 WHERE idExemplar='" +IS.getId()+ "'";
-            rs = st.executeQuery(query);
+            int t = st.executeUpdate(query);
             System.out.println("Atualizando disponibilidade do impresso...");
-            
+            System.out.println(t);
             return true;
         } catch (Exception e) {
             System.out.println(e);
