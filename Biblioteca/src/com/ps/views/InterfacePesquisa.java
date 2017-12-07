@@ -162,12 +162,12 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     ImpressoController ic = new ImpressoController();
     ResultSet resultado = ic.buscaImpresso(jTextField1.getText());
     
-    String[] nomesColunas = {"IdImpresso", "Nome", "Autor", "Disponibilidade"};
+    String[] nomesColunas = {"IdExemplar", "Nome", "Autor", "Disponibilidade"};
     int i=0;
         try {
             while(resultado.next()){
                 lista.add(new String[]{
-                    resultado.getString("IdImpresso"),
+                    resultado.getString("idExemplar"),
                     resultado.getString("Título"),
                     resultado.getString("Autor"),
                     resultado.getString("disponivel")});
