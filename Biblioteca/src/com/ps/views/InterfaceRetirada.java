@@ -100,6 +100,11 @@ public class InterfaceRetirada extends javax.swing.JFrame {
         jLabel3.setText("DEVOLUÇÃO");
 
         jButton3.setText("Devolver Livro");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,17 +170,16 @@ public class InterfaceRetirada extends javax.swing.JFrame {
     
     
     ImpressoController ic = new ImpressoController();
-    ResultSet resultado = ic.buscaImpresso(jTextField1.getText());
+    ResultSet resultado = ic.buscaImpressoDevolver(Integer.parseInt(jTextField1.getText()));
     
-    String[] nomesColunas = {"IdExemplar", "Nome", "Autor", "Disponibilidade"};
+    String[] nomesColunas = {"IdExemplar", "IdRetirada", "DataRetirada"};
     int i=0;
         try {
             while(resultado.next()){
                 lista.add(new String[]{
                     resultado.getString("idExemplar"),
-                    resultado.getString("Título"),
-                    resultado.getString("Autor"),
-                    resultado.getString("disponivel")});
+                    resultado.getString("idRetirada"),
+                    resultado.getString("DataRetirada")});
                 i++;
             }
        
@@ -219,6 +223,10 @@ public class InterfaceRetirada extends javax.swing.JFrame {
             jTextField2.setText(value);
         }
     }//GEN-LAST:event_jTable1MousePressed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     

@@ -36,6 +36,13 @@ public class ImpressoController {
         return livro;
     }
     
+    public ResultSet buscaImpressoDevolver(int matricula) {
+        ImpressoService is = new ImpressoService(matricula);
+        ResultSet impresso = is.buscaImpressoDevolver(matricula);
+        
+        return impresso;
+    }
+    
     public boolean emprestaImpresso(int id, int matricula) {
         ImpressoService is = new ImpressoService(id);
         if(is.emprestaImpresso(id, matricula)) {

@@ -63,6 +63,16 @@ public class ImpressoService {
         return impresso;
     }
     
+    public ResultSet buscaImpressoDevolver(int idImpresso, int matricula) {
+        ResultSet impresso;
+        
+        ImpressoData id = new ImpressoData();
+        
+        impresso = id.buscaImpressoDevolver(this, matricula);
+        
+        return impresso;
+    }
+    
     public boolean emprestaImpresso(int idImpresso, int matricula) {
         ImpressoData id = new ImpressoData();
         
