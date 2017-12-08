@@ -100,8 +100,8 @@ public class ImpressoData {
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
             formatador.format( data );
             
-            String query = "INSERT INTO Retirada (Matrícula, idExemplar, DataRetirada, DataDevolucao, Devolvido) VALUES\n" +
-"("+matricula+", "+IS.getId()+", '"+data+"', '"+data+"', 0)";
+            String query = "INSERT INTO Retirada (Matrícula, idExemplar, DataRetirada, Devolvido) VALUES\n" +
+"("+matricula+", "+IS.getId()+",'"+data+"', 0)";
             int t = st.executeUpdate(query);
             System.out.println("Inserindo em retirada...");
             System.out.println(t);
