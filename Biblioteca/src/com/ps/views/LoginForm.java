@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author rafallis
  */
 public class LoginForm extends javax.swing.JFrame {
-    Login actual;
+    Login actual = new Login();
     /**
      * Creates new form LoginForm
      */
