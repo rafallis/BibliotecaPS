@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ps.models;
+package com.ps.models.datas;
 
+import com.ps.models.DBConnect;
+import com.ps.models.services.LoginService;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -19,7 +21,7 @@ public class RetiradaData {
     private Statement st;
     private ResultSet rs;
         
-    public ResultSet buscaImpresso(Login login) {
+    public ResultSet buscaImpresso(LoginService login) {
         
         try {
             conn = DBConnect.getInstance().getConnection();
@@ -39,4 +41,5 @@ public class RetiradaData {
         
         return null;
     }
+    
 }

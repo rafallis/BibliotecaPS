@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ps.models;
+package com.ps.models.services;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author elrafa
  */
-public class Login {
+public class LoginService {
     String login;
     String senha;
     int type;
@@ -103,7 +103,7 @@ public class Login {
 
             
         } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginService.class.getName()).log(Level.SEVERE, null, ex);
         }
        
        br.close();
@@ -153,7 +153,7 @@ public class Login {
 
             
         } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginService.class.getName()).log(Level.SEVERE, null, ex);
         }
        
        br.close();

@@ -6,13 +6,16 @@
 package com.ps.views;
 
 import com.ps.controllers.ImpressoController;
-import com.ps.models.Login;
+import com.ps.models.datas.ImpressoData;
+import com.ps.models.services.LoginService;
+import com.ps.models.datas.RetiradaData;
 import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -34,18 +37,20 @@ public class InterfaceRetirada extends javax.swing.JFrame {
     public InterfaceRetirada() {
         initComponents();
         InitTable();
+        setLocationRelativeTo(null);
     }
     
     public InterfaceRetirada(int matricula) {
         this.matricula = matricula;
         initComponents();
         InitTable();
+        setLocationRelativeTo(null);
     }
     
     public void InitTable(){
         DefaultTableModel model = new DefaultTableModel(
-            lista.toArray(new String[lista.size()][]), nomesColunas);
-    jTable1.setModel(model);
+        lista.toArray(new String[lista.size()][]), nomesColunas);
+        jTable1.setModel(model);
     
     
         //String[] nomesColunas = {"Nome do Impresso", "Autor", "Quantidade"};
@@ -59,26 +64,26 @@ public class InterfaceRetirada extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
+        textFieldIdRetiradaDevolver = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        devolverButton = new javax.swing.JButton();
+        textFieldIdExemplarDevolver = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        messageSearch = new javax.swing.JLabel();
+        voltarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setText("Pesquisar Empréstimos");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Insira o nome do exemplar");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,14 +100,30 @@ public class InterfaceRetirada extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setText("Insira o Id do impresso");
+        textFieldIdRetiradaDevolver.setEditable(false);
+
+        jLabel2.setText("ID da Retirada");
 
         jLabel3.setText("DEVOLUÇÃO");
 
-        jButton3.setText("Devolver Livro");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        devolverButton.setText("Devolver Livro");
+        devolverButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                devolverButtonActionPerformed(evt);
+            }
+        });
+
+        textFieldIdExemplarDevolver.setEditable(false);
+
+        jLabel4.setText("ID do Exemplar");
+
+        messageSearch.setText("Selecione o empréstimo que deseja devolver");
+        messageSearch.setEnabled(false);
+
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
             }
         });
 
@@ -111,74 +132,86 @@ public class InterfaceRetirada extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83))
+                        .addGap(65, 65, 65)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(messageSearch)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 90, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(316, 316, 316)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 51, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(voltarButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(335, 335, 335)
+                        .addGap(377, 377, 377)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
+                        .addGap(224, 224, 224)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(jButton3)))))
+                            .addComponent(textFieldIdRetiradaDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldIdExemplarDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(37, 37, 37)
+                        .addComponent(devolverButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(voltarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(messageSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(21, 21, 21))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldIdRetiradaDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldIdExemplarDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(devolverButton)))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("empty-statement")
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    lista.removeAll(lista);
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        pesquisar();
+
+    }//GEN-LAST:event_searchButtonActionPerformed
     
+    public void pesquisar(){
+        lista.removeAll(lista);
+    messageSearch.setEnabled(true);
     
     ImpressoController ic = new ImpressoController();
-    ResultSet resultado = ic.buscaImpressoDevolver(Integer.parseInt(jTextField1.getText()));
+    ResultSet resultado = ic.buscaImpressoDevolver(this.matricula);
     
-    String[] nomesColunas = {"IdExemplar", "IdRetirada", "DataRetirada"};
+    String[] nomesColunas = {"IdRetirada", "IdExemplar", "DataRetirada"};
     int i=0;
         try {
             while(resultado.next()){
                 lista.add(new String[]{
-                    resultado.getString("idExemplar"),
                     resultado.getString("idRetirada"),
+                    resultado.getString("idExemplar"),
                     resultado.getString("DataRetirada")});
                 i++;
             }
@@ -214,19 +247,37 @@ public class InterfaceRetirada extends javax.swing.JFrame {
             Logger.getLogger(InterfacePesquisa.class.getName()).log(Level.SEVERE, null, ex);
         }
  
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
         if(evt.getClickCount() == 2) {
             String value = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-            jTextField2.setText(value);
+            String value2 = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+            textFieldIdRetiradaDevolver.setText(value);
+            textFieldIdExemplarDevolver.setText(value2);
         }
     }//GEN-LAST:event_jTable1MousePressed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void devolverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverButtonActionPerformed
+    if(!textFieldIdRetiradaDevolver.getText().equals("")){
+        ImpressoData retiradaData = new ImpressoData();
+        if(retiradaData.devolveExemplar(
+                Integer.parseInt(textFieldIdRetiradaDevolver.getText()),
+                Integer.parseInt(textFieldIdExemplarDevolver.getText())))
+            JOptionPane.showMessageDialog(rootPane, "LIVRO DEVOLVIDO COM SUCESSO");
+        else JOptionPane.showMessageDialog(rootPane, "OCORREU UM ERRO AO DEVOLVER O LIVRO");
+    }
+    textFieldIdRetiradaDevolver.setText("");
+    textFieldIdExemplarDevolver.setText("");
+    pesquisar();
+    
+    }//GEN-LAST:event_devolverButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        this.dispose();
+        InterfacePesquisa ipesquisa = new InterfacePesquisa(matricula);
+        ipesquisa.show();
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     
     
@@ -266,14 +317,16 @@ public class InterfaceRetirada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton devolverButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel messageSearch;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField textFieldIdExemplarDevolver;
+    private javax.swing.JTextField textFieldIdRetiradaDevolver;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

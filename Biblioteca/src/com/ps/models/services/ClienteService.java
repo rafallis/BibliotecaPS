@@ -1,4 +1,6 @@
-package com.ps.models;
+package com.ps.models.services;
+
+import com.ps.models.datas.ClienteData;
 
 public class ClienteService {
 

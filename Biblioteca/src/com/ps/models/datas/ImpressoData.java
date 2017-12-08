@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ps.models;
+package com.ps.models.datas;
 
+import com.ps.models.DBConnect;
+import com.ps.models.services.ImpressoService;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 
@@ -54,7 +56,7 @@ public class ImpressoData {
             conn = DBConnect.getInstance().getConnection();
             st = conn.createStatement();
             
-            System.out.println("Pesquisando impressos para devovler...");
+            System.out.println("Pesquisando impressos para devolver...");
             
             String query = "SELECT * FROM Retirada WHERE Matrícula='" +matricula+ "' AND Devolvido='0'";
             rs = st.executeQuery(query);
@@ -67,7 +69,7 @@ public class ImpressoData {
         return null;
     }
     
-    public boolean devolveImpresso(ImpressoService IS) {
+    public boolean devolveExemplar(int idRetirada, int idExemplar) {
         try {
             conn = DBConnect.getInstance().getConnection();
             st = conn.createStatement();
@@ -77,13 +79,13 @@ public class ImpressoData {
             formatador.format( data );
             
             System.out.println("Atualizando disponibilidade do impresso...");
-            String query = "UPDATE Exemplar SET disponivel = 1 WHERE idExemplar='" +IS.getId()+ "'";
+            String query = "UPDATE Exemplar SET disponivel = 1 WHERE idExemplar='" +idExemplar+ "'";
             st.executeUpdate(query);
             
-            String query1 = "UPDATE Retirada SET Devolvido=1 WHERE idRetirada=ID_DA_RETIRADA";
+            String query1 = "UPDATE Retirada SET Devolvido=1 WHERE idRetirada="+idRetirada;
             st.executeUpdate(query1);
             
-            String query2 = "UPDATE Retirada SET DataDevolucao= '2000-11-01' WHERE idRetirada=ID_DA_RETIRADA";
+            String query2 = "UPDATE Retirada SET DataDevolucao= '"+data+"' WHERE idRetirada="+idRetirada;
             st.executeUpdate(query2);
             
             return true;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ps.models;
+package com.ps.models.datas;
 
 import java.sql.*;
 

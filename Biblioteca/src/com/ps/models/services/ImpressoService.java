@@ -1,5 +1,6 @@
-package com.ps.models;
+package com.ps.models.services;
 
+import com.ps.models.datas.ImpressoData;
 import java.util.Date;
 import java.sql.ResultSet;
 
@@ -123,5 +124,10 @@ public class ImpressoService {
 
     public void setAutor(String autor) {
         this.autores = autor;
+    }
+
+    public ResultSet buscaImpressoDevolver(int matricula) {
+        ImpressoData impressoData = new ImpressoData();
+        return impressoData.buscaImpressoDevolver(this, matricula);
     }
 }

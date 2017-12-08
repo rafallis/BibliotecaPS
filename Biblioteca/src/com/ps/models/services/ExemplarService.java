@@ -1,4 +1,4 @@
-package com.ps.models;
+package com.ps.models.services;
 
 import java.util.Date;
 

@@ -7,7 +7,7 @@ package com.ps.views;
 
 import com.ps.controllers.ClienteController;
 import com.ps.models.DBConnect;
-import com.ps.models.Login;
+import com.ps.models.services.LoginService;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,13 +16,15 @@ import java.util.logging.Logger;
  *
  * @author rafallis
  */
-public class LoginForm extends javax.swing.JFrame {
-    Login actual = new Login();
+public class InterfaceLogin extends javax.swing.JFrame {
+    LoginService actual = new LoginService();
     /**
      * Creates new form LoginForm
      */
-    public LoginForm() {
+    public InterfaceLogin() {
+        
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -136,7 +138,7 @@ public class LoginForm extends javax.swing.JFrame {
         try {
             actual.setSenha(passwordField.getText());
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InterfaceLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(!cc.fazerLogin(Integer.parseInt(loginTextField.getText()), passwordField.getText())) this.dispose();
         
@@ -145,7 +147,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldKeyPressed
-    public Login getLogin(){
+    public LoginService getLogin(){
         return actual;
     }
     /**
@@ -165,20 +167,21 @@ public class LoginForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                new InterfaceLogin().setVisible(true);
             }
         });
     }

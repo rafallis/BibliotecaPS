@@ -1,6 +1,6 @@
 package com.ps.controllers;
 import com.ps.controllers.ImpressoController;
-import com.ps.models.AcervoService;
+import com.ps.models.services.AcervoService;
 import java.util.Date;
 /*
  * To change this license header, choose License Headers in Project Properties.

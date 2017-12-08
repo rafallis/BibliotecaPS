@@ -6,7 +6,7 @@
 package com.ps.views;
 
 import com.ps.controllers.ImpressoController;
-import com.ps.models.Login;
+import com.ps.models.services.LoginService;
 import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +33,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
      */
     public InterfacePesquisa() {
         initComponents();
+        setLocationRelativeTo(null);
         InitTable();
     }
     
@@ -40,12 +41,14 @@ public class InterfacePesquisa extends javax.swing.JFrame {
         this.matricula = matricula;
         initComponents();
         InitTable();
+        this.show();
+        setLocationRelativeTo(null);
     }
     
     public void InitTable(){
         DefaultTableModel model = new DefaultTableModel(
-            lista.toArray(new String[lista.size()][]), nomesColunas);
-    jTable1.setModel(model);
+        lista.toArray(new String[lista.size()][]), nomesColunas);
+        jTable1.setModel(model);
     
     
         //String[] nomesColunas = {"Nome do Impresso", "Autor", "Quantidade"};
@@ -59,7 +62,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -67,16 +70,16 @@ public class InterfacePesquisa extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        solicitarEmprestimoButton = new javax.swing.JButton();
+        irDevolverInterfaceButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setText("Pesquisar");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
 
@@ -101,17 +104,17 @@ public class InterfacePesquisa extends javax.swing.JFrame {
 
         jLabel3.setText("EMPRÉSTIMO");
 
-        jButton2.setText("Solicitar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        solicitarEmprestimoButton.setText("Solicitar");
+        solicitarEmprestimoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                solicitarEmprestimoButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Devolver Livro");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        irDevolverInterfaceButton.setText("Devolver Livro");
+        irDevolverInterfaceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                irDevolverInterfaceButtonActionPerformed(evt);
             }
         });
 
@@ -127,7 +130,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +153,9 @@ public class InterfacePesquisa extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-                                .addComponent(jButton2)
+                                .addComponent(solicitarEmprestimoButton)
                                 .addGap(184, 184, 184)
-                                .addComponent(jButton3)))
+                                .addComponent(irDevolverInterfaceButton)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -163,7 +166,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -175,16 +178,19 @@ public class InterfacePesquisa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(solicitarEmprestimoButton)
+                    .addComponent(irDevolverInterfaceButton))
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     @SuppressWarnings("empty-statement")
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+    pesquisar();
+    }//GEN-LAST:event_searchButtonActionPerformed
+    public void pesquisar(){
     lista.removeAll(lista);
     
     
@@ -212,31 +218,12 @@ public class InterfacePesquisa extends javax.swing.JFrame {
             };
             
             jTable1.setModel(model);
-            
-            //initTable();
-            //essa lista terá as linhas da sua JTable, preenchi abaixo apenas como exemplo
-            //aqui você fará um while percorrendo seu result set e adicionando na lista
-            //while(resultset.next()) {
-            /*
-            lista.add(new String[]{"O Príncipe", "MAQUIAVEL, N.", "3"});
-            lista.add(new String[]{"O Existencialismo é um Humanismo", "SARTRE, J. P.", "4"});
-            lista.add(new String[]{"Assim falava Zaratustra", "NIETZSCHE, F.", "1"});
-            if(isOrNot) lista.add(new String[]{"Fortaleza Digital", "BROWN, D.", "1"});
-            DefaultTableModel model = new DefaultTableModel(
-            lista.toArray(new String[lista.size()][]), nomesColunas);
-            jTable1.setModel(model);
-            
-            isOrNot = true;
-            */
-            
-            //for(int i=0; i < 20; i++) jTable1.add(new Object[]("NUMERO" + i,""+i, "TESTANDO" + i));
         } catch (SQLException ex) {
             Logger.getLogger(InterfacePesquisa.class.getName()).log(Level.SEVERE, null, ex);
         }
  
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
         if(evt.getClickCount() == 2) {
             String value = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
@@ -244,20 +231,20 @@ public class InterfacePesquisa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable1MousePressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void solicitarEmprestimoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarEmprestimoButtonActionPerformed
         ImpressoController ic = new ImpressoController();
         
         if(ic.emprestaImpresso(Integer.parseInt(jTextField2.getText()), matricula)){
-            
+           pesquisar(); 
         }        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_solicitarEmprestimoButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void irDevolverInterfaceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irDevolverInterfaceButtonActionPerformed
         this.dispose();
-        InterfaceRetirada iretirada = new InterfaceRetirada();
+        InterfaceRetirada iretirada = new InterfaceRetirada(matricula);
         iretirada.show();
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_irDevolverInterfaceButtonActionPerformed
 
     
     
@@ -297,9 +284,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton irDevolverInterfaceButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -308,5 +293,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JButton solicitarEmprestimoButton;
     // End of variables declaration//GEN-END:variables
 }

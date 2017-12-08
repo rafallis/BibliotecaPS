@@ -5,7 +5,7 @@
  */
 package com.ps.controllers;
 
-import com.ps.models.ImpressoService;
+import com.ps.models.services.ImpressoService;
 import java.util.Date;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;

@@ -1,8 +1,9 @@
-package com.ps.models;
+package com.ps.models.services;
 
+import com.ps.models.services.ExemplarService;
 import java.util.Date;
 
-public class Retirada {
+public class RetiradaService {
 
     private int idRetirada;
 

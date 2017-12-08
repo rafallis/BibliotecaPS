@@ -5,11 +5,10 @@
  */
 package com.ps.controllers;
 
-import com.ps.models.ClienteService;
-import com.ps.models.Login;
-import com.ps.models.RetiradaData;
+import com.ps.models.services.ClienteService;
+import com.ps.models.services.LoginService;
+import com.ps.models.datas.RetiradaData;
 import com.ps.views.InterfacePesquisa;
-import com.ps.views.InterfacePrincipalPesquisa;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,14 +28,13 @@ public class ClienteController {
             
             JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!");
             
-            InterfacePrincipalPesquisa newInterface = new InterfacePrincipalPesquisa(matricula);
-            
+            InterfacePesquisa newInterface = new InterfacePesquisa(matricula);
             return false;
         }
         return true;
     }
     
-    public void CatchLogin(Login login){
+    public void CatchLogin(LoginService login){
          RetiradaData retirada = new RetiradaData();
          //retirada.buscaImpresso(login)
     }
