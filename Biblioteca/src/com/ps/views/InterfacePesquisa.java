@@ -6,6 +6,7 @@
 package com.ps.views;
 
 import com.ps.controllers.ImpressoController;
+import com.ps.models.Login;
 import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
@@ -25,10 +27,17 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     ArrayList<String[]> lista = new ArrayList<>();
     String[] nomesColunas = {"Nome do Impresso", "Autor", "Quantidade"};
     Boolean isOrNot = false;
+    int matricula;
     /**
      * Creates new form InterfacePesquisa
      */
     public InterfacePesquisa() {
+        initComponents();
+        InitTable();
+    }
+    
+    public InterfacePesquisa(int matricula) {
+        this.matricula = matricula;
         initComponents();
         InitTable();
     }
@@ -218,7 +227,7 @@ public class InterfacePesquisa extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ImpressoController ic = new ImpressoController();
         
-        if(ic.emprestaImpresso(Integer.parseInt(jTextField2.getText()))){
+        if(ic.emprestaImpresso(Integer.parseInt(jTextField2.getText()), matricula)){
             
         }        
     }//GEN-LAST:event_jButton2ActionPerformed

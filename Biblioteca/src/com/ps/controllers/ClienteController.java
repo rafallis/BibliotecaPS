@@ -29,7 +29,7 @@ public class ClienteController {
             
             JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!");
             
-            InterfacePrincipalPesquisa newInterface = new InterfacePrincipalPesquisa();
+            InterfacePrincipalPesquisa newInterface = new InterfacePrincipalPesquisa(matricula);
             
             return false;
         }
@@ -38,6 +38,6 @@ public class ClienteController {
     
     public void CatchLogin(Login login){
          RetiradaData retirada = new RetiradaData();
-         retirada.buscaImpresso(login)
+         //retirada.buscaImpresso(login)
     }
 }

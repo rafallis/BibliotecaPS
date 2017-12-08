@@ -36,9 +36,9 @@ public class ImpressoController {
         return livro;
     }
     
-    public boolean emprestaImpresso(int id) {
+    public boolean emprestaImpresso(int id, int matricula) {
         ImpressoService is = new ImpressoService(id);
-        if(is.emprestaImpresso(id)) {
+        if(is.emprestaImpresso(id, matricula)) {
             JOptionPane.showMessageDialog(null, "Livro emprestado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             return true;
         } else {

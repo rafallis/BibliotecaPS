@@ -63,11 +63,12 @@ public class ImpressoService {
         return impresso;
     }
     
-    public boolean emprestaImpresso(int idImpresso) {
+    public boolean emprestaImpresso(int idImpresso, int matricula) {
         ImpressoData id = new ImpressoData();
         
         if(id.verificaDisponibilidadeImpresso(this)) {
             id.atualizaDisponibilidade(this);
+            id.insereRetirada(this, matricula);
             return true;
         } else {
             return false;

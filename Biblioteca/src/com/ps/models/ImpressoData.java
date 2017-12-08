@@ -6,6 +6,7 @@
 package com.ps.models;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -82,6 +83,27 @@ public class ImpressoData {
             String query = "UPDATE Exemplar SET disponivel = 0 WHERE idExemplar='" +IS.getId()+ "'";
             int t = st.executeUpdate(query);
             System.out.println("Atualizando disponibilidade do impresso...");
+            System.out.println(t);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+    
+    public boolean insereRetirada(ImpressoService IS, int matricula) {
+        try {
+            conn = DBConnect.getInstance().getConnection();
+            st = conn.createStatement();
+            
+            Date data = new Date(System.currentTimeMillis());
+            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+            formatador.format( data );
+            
+            String query = "INSERT INTO Retirada (Matrícula, idExemplar, DataRetirada, DataDevolucao, Devolvido) VALUES\n" +
+"("+matricula+", "+IS.getId()+", '"+data+"', '"+data+"', 0)";
+            int t = st.executeUpdate(query);
+            System.out.println("Inserindo em retirada...");
             System.out.println(t);
             return true;
         } catch (Exception e) {
