@@ -30,7 +30,10 @@ public class Login {
 
    public void setLogin(String login){
        this.login = login;
-   } 
+   }
+   public void setSenha(String senha, Boolean flag){
+       this.senha = senha;
+   }
    public void setSenha(String senha) throws NoSuchAlgorithmException{
        String s = senha;
        MessageDigest m=MessageDigest.getInstance("MD5");

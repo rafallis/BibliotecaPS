@@ -6,6 +6,8 @@
 package com.ps.controllers;
 
 import com.ps.models.ClienteService;
+import com.ps.models.Login;
+import com.ps.models.RetiradaData;
 import com.ps.views.InterfacePesquisa;
 import com.ps.views.InterfacePrincipalPesquisa;
 import javax.swing.JOptionPane;
@@ -32,5 +34,10 @@ public class ClienteController {
             return false;
         }
         return true;
+    }
+    
+    public void CatchLogin(Login login){
+         RetiradaData retirada = new RetiradaData();
+         retirada.buscaImpresso(login)
     }
 }

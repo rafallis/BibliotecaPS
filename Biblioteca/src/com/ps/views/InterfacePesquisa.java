@@ -217,7 +217,10 @@ public class InterfacePesquisa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ImpressoController ic = new ImpressoController();
-        ic.emprestaImpresso(Integer.parseInt(jTextField2.getText()));
+        
+        if(ic.emprestaImpresso(Integer.parseInt(jTextField2.getText()))){
+            
+        }        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     

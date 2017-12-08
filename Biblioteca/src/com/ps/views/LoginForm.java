@@ -7,13 +7,17 @@ package com.ps.views;
 
 import com.ps.controllers.ClienteController;
 import com.ps.models.DBConnect;
+import com.ps.models.Login;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author rafallis
  */
 public class LoginForm extends javax.swing.JFrame {
-
+    Login actual;
     /**
      * Creates new form LoginForm
      */
@@ -128,13 +132,22 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ClienteController cc = new ClienteController();
+        actual.setLogin(loginTextField.getText());
+        try {
+            actual.setSenha(passwordField.getText());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if(!cc.fazerLogin(Integer.parseInt(loginTextField.getText()), passwordField.getText())) this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldKeyPressed
-
+    public Login getLogin(){
+        return actual;
+    }
     /**
      * @param args the command line arguments
      */
