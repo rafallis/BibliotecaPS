@@ -11,6 +11,8 @@ import com.ps.models.services.LoginService;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,6 +71,11 @@ public class InterfaceLogin extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,6 +154,13 @@ public class InterfaceLogin extends javax.swing.JFrame {
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println("Encerrando sistema...");
+        JOptionPane.showMessageDialog(null, "Obrigado por usar o Sistema para Bibliotecas.", "Saindo", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
     public LoginService getLogin(){
         return actual;
     }
